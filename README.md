@@ -1,5 +1,7 @@
 # Sudoku
 
+This Sudoku application is entirely written by AI. You can play it online at [Sudoku](https://mahahmadi360.github.io/MAH.Sudoku/).
+
 This project is built with Angular 21.
 
 ## Development server
