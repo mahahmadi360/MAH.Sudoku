@@ -1,14 +1,14 @@
 import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routes } from './app.routes';
+import { AssertInterceptor } from './core/interceptors/assert.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideAnimationsAsync(),
-    provideHttpClient(),
+    provideHttpClient( withInterceptorsFromDi()),
+    {provide: HTTP_INTERCEPTORS, useClass: AssertInterceptor, multi: true}
   ],
 };
