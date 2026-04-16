@@ -1,0 +1,4 @@
+<div class="timer" [class.paused]="!isRunning()">
+  <mat-icon class="timer-icon">timer</mat-icon>
+  <span class="timer-value">{{ formattedTime() }}</span>
+</div>

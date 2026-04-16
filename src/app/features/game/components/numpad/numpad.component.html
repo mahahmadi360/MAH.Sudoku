@@ -1,0 +1,12 @@
+<div class="numpad">
+  @for (num of numbers; track num) {
+    <button
+      class="numpad-btn"
+      [class.completed]="isCompleted(num)"
+      [disabled]="isCompleted(num)"
+      (click)="onNumberSelect(num)"
+      [attr.aria-label]="getNumberAriaLabel(num)">
+      {{ num }}
+    </button>
+  }
+</div>

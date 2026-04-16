@@ -1,0 +1,20 @@
+<div class="controls">
+  <button mat-button (click)="onUndo()" [disabled]="!canUndo()" [attr.aria-label]="'aria.undoLastMove' | translate">
+    <mat-icon>undo</mat-icon>
+    <span>{{ 'game.undo' | translate }}</span>
+  </button>
+  <button mat-button (click)="onErase()" [attr.aria-label]="'aria.eraseSelectedCell' | translate">
+    <mat-icon>backspace</mat-icon>
+    <span>{{ 'game.erase' | translate }}</span>
+  </button>
+  <button
+    mat-button
+    class="hints-toggle"
+    [class.active]="isHintMode()"
+    (click)="onToggleHints()"
+    [attr.aria-label]="'aria.toggleHints' | translate"
+    [attr.aria-pressed]="isHintMode()">
+    <mat-icon>edit_note</mat-icon>
+    <span>{{ 'game.hints' | translate }}</span>
+  </button>
+</div>

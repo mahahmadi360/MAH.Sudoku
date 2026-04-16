@@ -1,0 +1,57 @@
+@use '@angular/material' as mat;
+
+html[data-theme='light'] {
+  --sudoku-board-bg: #ffffff;
+  --sudoku-cell-bg: #ffffff;
+  --sudoku-cell-given-color: #1a1a2e;
+  --sudoku-cell-user-color: #1565c0;
+  --sudoku-cell-border: #bdbdbd;
+  --sudoku-box-border: #212121;
+  --sudoku-cell-selected-bg: #bbdefb;
+  --sudoku-cell-highlighted-bg: #e3f2fd;
+  --sudoku-cell-same-number-bg: #c8e6c9;
+  --sudoku-numpad-bg: #e3f2fd;
+  --sudoku-numpad-hover: #bbdefb;
+  --sudoku-bg: #fafafa;
+  --sudoku-text: #212121;
+  --sudoku-text-secondary: #666666;
+  color-scheme: light;
+
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$cyan-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+html[data-theme='dark'] {
+  --sudoku-board-bg: #1e1e2e;
+  --sudoku-cell-bg: #2a2a3e;
+  --sudoku-cell-given-color: #e0e0e0;
+  --sudoku-cell-user-color: #64b5f6;
+  --sudoku-cell-border: #444466;
+  --sudoku-box-border: #8888aa;
+  --sudoku-cell-selected-bg: #1a237e;
+  --sudoku-cell-highlighted-bg: #1b1b3a;
+  --sudoku-cell-same-number-bg: #1b5e20;
+  --sudoku-numpad-bg: #2a2a3e;
+  --sudoku-numpad-hover: #3a3a5e;
+  --sudoku-bg: #121212;
+  --sudoku-text: #e0e0e0;
+  --sudoku-text-secondary: #aaaaaa;
+  color-scheme: dark;
+
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+      tertiary: mat.$cyan-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}

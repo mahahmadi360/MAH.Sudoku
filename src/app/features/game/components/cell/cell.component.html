@@ -1,0 +1,25 @@
+<div
+  class="cell"
+  [class.given]="cell().isGiven"
+  [class.selected]="isSelected()"
+  [class.highlighted]="isHighlighted()"
+  [class.same-number]="isSameNumber()"
+  [class.filled]="cell().value !== null"
+  (click)="onSelect()"
+  role="gridcell"
+  [attr.aria-label]="ariaLabel()"
+  tabindex="-1">
+  @if (cell().value) {
+    {{ cell().value }}
+  } @else if (cell().notes.length > 0) {
+    <div class="notes-grid">
+      @for (i of digits; track i) {
+        <div
+          class="cell-hint"
+          [class.match]="cell().notes.includes(i) && selectedNumber() === i">
+          {{ cell().notes.includes(i) ? i : '' }}
+        </div>
+      }
+    </div>
+  }
+</div>

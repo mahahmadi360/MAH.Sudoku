@@ -1,0 +1,60 @@
+.numpad {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.numpad-btn {
+  width: 42px;
+  height: 42px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--sudoku-numpad-bg);
+  color: var(--sudoku-text);
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex: 0 0 auto;
+
+  &:hover:not(:disabled) {
+    background: var(--sudoku-numpad-hover);
+    transform: scale(1.05);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled,
+  &.completed {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+@media (max-width: 480px) {
+  .numpad {
+    gap: 4px;
+  }
+
+  .numpad-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .numpad-btn {
+    width: 33px;
+    height: 33px;
+    font-size: 1rem;
+  }
+}

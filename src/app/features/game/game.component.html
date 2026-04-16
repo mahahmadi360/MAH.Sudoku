@@ -1,0 +1,32 @@
+<div class="game-container">
+  <div class="game-header">
+    <div class="difficulty-badge">{{ 'difficulty.' + gameState.difficulty() | translate }}</div>
+    <app-timer
+      [elapsedSeconds]="gameState.elapsedSeconds()"
+      [isRunning]="gameState.isRunning()" />
+  </div>
+
+  <app-board
+    [board]="gameState.board()"
+    [selectedCell]="gameState.selectedCell()"
+    [highlightedCells]="gameState.highlightedCells()"
+    [selectedNumber]="gameState.selectedNumber()"
+    (cellSelect)="onCellSelect($event)" />
+
+  <app-game-controls
+    [canUndo]="gameState.canUndo()"
+    [isHintMode]="gameState.isHintMode()"
+    (undo)="onUndo()"
+    (erase)="onErase()"
+    (toggleHints)="onToggleHints()" />
+
+  <app-numpad
+    [numberCounts]="gameState.numberCounts()"
+    (numberSelect)="onNumberSelect($event)" />
+
+  @if (gameState.isComplete()) {
+    <div class="completion-banner">
+      <span>{{ 'game.puzzleComplete' | translate }}</span>
+    </div>
+  }
+</div>

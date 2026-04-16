@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{ 'dialog.newGame' | translate }}</h2>
+<mat-dialog-content>
+  <p class="dialog-subtitle">{{ 'dialog.selectDifficulty' | translate }}</p>
+  <div class="difficulty-group">
+    @for (diff of difficulties; track diff.value) {
+      <button
+        mat-flat-button
+        class="difficulty-btn"
+        (click)="onSelect(diff.value)">
+        {{ diff.label | translate }}
+      </button>
+    }
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">{{ 'dialog.cancel' | translate }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,38 @@
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .hints-toggle.active {
+    background: var(--sudoku-cell-selected-bg);
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 360px) {
+  .controls {
+    gap: 8px;
+
+    button {
+      gap: 0;
+      min-width: 90px;
+      padding: 0 5px;
+
+      span {
+        display: none;
+      }
+
+      mat-icon {
+        margin: 0;
+      }
+    }
+  }
+}

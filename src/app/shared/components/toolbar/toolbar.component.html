@@ -1,0 +1,26 @@
+<mat-toolbar class="app-toolbar">
+  <span class="app-title">{{ 'app.title' | translate }}</span>
+  <span class="spacer"></span>
+
+  <button mat-button (click)="newGame.emit()" [attr.aria-label]="'aria.startNewGame' | translate">
+    <mat-icon>add</mat-icon>
+    <span class="btn-text">{{ 'game.newGame' | translate }}</span>
+  </button>
+
+  @if (availableLanguages().length > 1) {
+    <mat-form-field class="lang-select" appearance="outline" subscriptSizing="dynamic">
+      <mat-select
+        [value]="currentLang()"
+        (selectionChange)="languageChange.emit($event.value)"
+        [attr.aria-label]="'aria.selectLanguage' | translate">
+        @for (lang of availableLanguages(); track lang.code) {
+          <mat-option [value]="lang.code">{{ lang.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  }
+
+  <app-theme-toggle
+    [isDark]="isDarkMode()"
+    (toggle)="themeToggle.emit()" />
+</mat-toolbar>

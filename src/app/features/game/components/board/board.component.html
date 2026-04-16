@@ -1,0 +1,19 @@
+<div class="board" role="grid" [attr.aria-label]="'aria.sudokuBoard' | translate">
+  @for (row of board(); track $index; let rowIndex = $index) {
+    <div class="board-row" role="row">
+      @for (cell of row; track $index; let colIndex = $index) {
+        <div class="cell-wrapper"
+             [class.border-right]="colIndex === 2 || colIndex === 5"
+             [class.border-bottom]="rowIndex === 2 || rowIndex === 5">
+          <app-cell
+            [cell]="cell"
+            [isSelected]="isSelected(rowIndex, colIndex)"
+            [isHighlighted]="isHighlighted(rowIndex, colIndex)"
+            [isSameNumber]="isSameNumber(cell.value)"
+            [selectedNumber]="selectedNumber()"
+            (select)="onCellSelect(rowIndex, colIndex)" />
+        </div>
+      }
+    </div>
+  }
+</div>

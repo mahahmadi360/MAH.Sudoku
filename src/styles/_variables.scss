@@ -1,0 +1,21 @@
+:root {
+  --sudoku-cell-size: 52px;
+  --sudoku-cell-font-size: 1.4rem;
+  --sudoku-border-thin: 1px;
+  --sudoku-border-thick: 3px;
+  --sudoku-transition-speed: 0.3s;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sudoku-cell-size: 36px;
+    --sudoku-cell-font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --sudoku-cell-size: 44px;
+    --sudoku-cell-font-size: 1.2rem;
+  }
+}

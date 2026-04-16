@@ -1,0 +1,33 @@
+.board {
+  display: inline-flex;
+  flex-direction: column;
+  border: var(--sudoku-border-thick) solid var(--sudoku-box-border);
+  background: var(--sudoku-board-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.board-row {
+  display: flex;
+}
+
+.cell-wrapper {
+  border-right: var(--sudoku-border-thin) solid var(--sudoku-cell-border);
+  border-bottom: var(--sudoku-border-thin) solid var(--sudoku-cell-border);
+
+  &.border-right {
+    border-right: var(--sudoku-border-thick) solid var(--sudoku-box-border);
+  }
+
+  &.border-bottom {
+    border-bottom: var(--sudoku-border-thick) solid var(--sudoku-box-border);
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.board-row:last-child .cell-wrapper {
+  border-bottom: none;
+}

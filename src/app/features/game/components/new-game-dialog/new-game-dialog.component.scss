@@ -1,0 +1,15 @@
+.dialog-subtitle {
+  margin-bottom: 16px;
+  color: var(--sudoku-text-secondary);
+}
+
+.difficulty-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.difficulty-btn {
+  width: 100%;
+  justify-content: center;
+}

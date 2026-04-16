@@ -1,0 +1,11 @@
+<app-toolbar
+  [isDarkMode]="themeService.isDarkMode()"
+  [currentLang]="currentLang"
+  [availableLanguages]="availableLanguages"
+  (newGame)="onNewGame()"
+  (themeToggle)="onThemeToggle()"
+  (languageChange)="onLanguageChange($event)" />
+
+<main>
+  <router-outlet (activate)="onRouterActivate($event)" />
+</main>
