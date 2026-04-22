@@ -10,6 +10,8 @@ html[data-theme='light'] {
   --sudoku-cell-selected-bg: #bbdefb;
   --sudoku-cell-highlighted-bg: #e3f2fd;
   --sudoku-cell-same-number-bg: #c8e6c9;
+  --sudoku-cell-conflict-bg: #ffebee;
+  --sudoku-cell-conflict-color: #b00020;
   --sudoku-numpad-bg: #e3f2fd;
   --sudoku-numpad-hover: #bbdefb;
   --sudoku-bg: #fafafa;
@@ -38,6 +40,8 @@ html[data-theme='dark'] {
   --sudoku-cell-selected-bg: #1a237e;
   --sudoku-cell-highlighted-bg: #1b1b3a;
   --sudoku-cell-same-number-bg: #1b5e20;
+  --sudoku-cell-conflict-bg: #4f1b1f;
+  --sudoku-cell-conflict-color: #ffb4ab;
   --sudoku-numpad-bg: #2a2a3e;
   --sudoku-numpad-hover: #3a3a5e;
   --sudoku-bg: #121212;

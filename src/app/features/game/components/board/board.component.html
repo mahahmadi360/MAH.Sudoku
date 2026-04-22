@@ -9,6 +9,7 @@
             [cell]="cell"
             [isSelected]="isSelected(rowIndex, colIndex)"
             [isHighlighted]="isHighlighted(rowIndex, colIndex)"
+            [isConflict]="isConflict(rowIndex, colIndex)"
             [isSameNumber]="isSameNumber(cell.value)"
             [selectedNumber]="selectedNumber()"
             (select)="onCellSelect(rowIndex, colIndex)" />

@@ -9,6 +9,8 @@ export interface MoveRecord {
   newValue: number | null;
   // For 'value' moves, captures notes that were cleared when the value was committed
   previousNotes?: number[];
+  clearedNotePositions?: CellPosition[];
+  clearedNoteDigit?: number;
   // For 'note' moves
   noteDigit?: number;
   noteAdded?: boolean;

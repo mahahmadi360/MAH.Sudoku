@@ -29,6 +29,11 @@
     background: var(--sudoku-cell-selected-bg);
   }
 
+  &.conflict {
+    background: var(--sudoku-cell-conflict-bg);
+    color: var(--sudoku-cell-conflict-color);
+  }
+
   &:hover:not(.selected) {
     filter: brightness(0.95);
   }

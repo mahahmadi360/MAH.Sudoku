@@ -176,12 +176,15 @@ export class GameStateService {
       return;
     }
 
+    const clearedNotePositions = this.clearNotesFromHighlightedCells(num, pos);
     const move: MoveRecord = {
       kind: 'value',
       position: { ...pos },
       previousValue: cell.value,
       newValue: num,
       previousNotes: cell.notes.length > 0 ? [...cell.notes] : undefined,
+      clearedNotePositions,
+      clearedNoteDigit: num,
     };
 
     this.moveHistory.update(history => [...history, move]);
@@ -256,8 +259,44 @@ export class GameStateService {
         lastMove.previousValue,
         lastMove.previousNotes,
       );
+
+      if (lastMove.clearedNotePositions?.length && lastMove.clearedNoteDigit !== undefined) {
+        this.restoreClearedHighlightedNotes(lastMove.clearedNotePositions, lastMove.clearedNoteDigit);
+      }
     }
     this.selectedCell.set(lastMove.position);
+  }
+
+  private clearNotesFromHighlightedCells(digit: number, selectedPos: CellPosition): CellPosition[] {
+    const removed: CellPosition[] = [];
+    const highlighted = this.highlightedCells();
+
+    this.board.update(board =>
+      board.map((row, rowIndex) =>
+        row.map((cell, colIndex) => {
+          if (!highlighted.has(`${rowIndex}-${colIndex}`)) return cell;
+          if (rowIndex === selectedPos.row && colIndex === selectedPos.col) return cell;
+          if (!cell.notes.includes(digit)) return cell;
+
+          removed.push({ row: rowIndex, col: colIndex });
+          return { ...cell, notes: cell.notes.filter(n => n !== digit) };
+        })
+      )
+    );
+
+    return removed;
+  }
+
+  private restoreClearedHighlightedNotes(positions: CellPosition[], digit: number): void {
+    this.board.update(board =>
+      board.map((row, rowIndex) =>
+        row.map((cell, colIndex) => {
+          if (!positions.some(pos => pos.row === rowIndex && pos.col === colIndex)) return cell;
+          if (cell.notes.includes(digit)) return cell;
+          return { ...cell, notes: [...cell.notes, digit].sort((a, b) => a - b) };
+        })
+      )
+    );
   }
 
   moveSelection(direction: 'up' | 'down' | 'left' | 'right'): void {

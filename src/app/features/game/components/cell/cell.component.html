@@ -3,6 +3,7 @@
   [class.given]="cell().isGiven"
   [class.selected]="isSelected()"
   [class.highlighted]="isHighlighted()"
+  [class.conflict]="isConflict()"
   [class.same-number]="isSameNumber()"
   [class.filled]="cell().value !== null"
   (click)="onSelect()"

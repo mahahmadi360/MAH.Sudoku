@@ -14,6 +14,7 @@ export class CellComponent {
   readonly cell = input.required<Cell>();
   readonly isSelected = input(false);
   readonly isHighlighted = input(false);
+  readonly isConflict = input(false);
   readonly isSameNumber = input(false);
   readonly selectedNumber = input<number | null>(null);
 

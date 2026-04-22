@@ -30,6 +30,24 @@ export class BoardComponent {
     return this.highlightedCells().has(`${row}-${col}`);
   }
 
+  isConflict(row: number, col: number): boolean {
+    const sel = this.selectedCell();
+    if (!sel || sel.row !== row || sel.col !== col) return false;
+
+    const cell = this.board()[row][col];
+    if (cell.value === null) return false;
+
+    for (const key of this.highlightedCells()) {
+      const [r, c] = key.split('-').map(Number);
+      if (r === row && c === col) continue;
+      if (this.board()[r][c].value === cell.value) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   isSameNumber(value: number | null): boolean {
     const sel = this.selectedNumber();
     return sel !== null && value !== null && sel === value;
